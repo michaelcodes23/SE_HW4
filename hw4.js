@@ -163,7 +163,7 @@ const bondFilms = [{
 // 1
 const bondTitles = [];
 
-for(let i in bondFilms){
+for (let i in bondFilms) {
     bondTitles.push(bondFilms[i].title)
 }
 
@@ -172,8 +172,8 @@ console.log(bondTitles);
 // 2
 const oddBonds = [];
 
-for(let i in bondFilms){
-    if (bondFilms[i].year % 2 !== 0){
+for (let i in bondFilms) {
+    if (bondFilms[i].year % 2 !== 0) {
         oddBonds.push(bondFilms[i].title);
     }
 }
@@ -181,14 +181,79 @@ console.log(oddBonds)
 // 3
 let cumulGross = 0;
 
-for(let i in bondFilms){
+for (let i in bondFilms) {
     let re1 = bondFilms[i].gross
-    let re2 = re1.replace("$","");
-    let re3 = re2.replace(",","");
-    let re4 = re3.replace(",","");
-    let re5 = re4.replace(",","");
+    let re2 = re1.replace("$", "");
+    let re3 = re2.replace(",", "");
+    let re4 = re3.replace(",", "");
+    let re5 = re4.replace(",", "");
     let num = parseInt(re5);
     cumulGross += num;
 }
 console.log(typeof bondFilms[0].gross)
-console.log(cumulGross)
+console.log(cumulGross);
+
+//BONDS FILM CHALLENGE
+
+const actors = [{
+        "actor": "Daniel Craig",
+        "apps": ""
+    },
+    {
+        "actor": "Roger Moore",
+        "apps": ""
+    },
+    {
+        "actor": "Sean Connery",
+        "apps": ""
+    },
+    {
+        "actor": "Pierce Brosnan",
+        "apps": ""
+    },
+    {
+        "actor": "George Lazenby",
+        "apps": ""
+    },
+    {
+        "actor": "Timothy Dalton",
+        "apps": ""
+    }
+]
+
+for (let i in actors) {
+    let actor = actors[i].actor
+    let numApps = 0
+    for (let j in bondFilms) {
+        if (bondFilms[j].actor === actor) {
+            numApps++
+        }
+    }
+    actors[i].apps = numApps
+
+}
+console.log(actors);
+
+
+
+let lessAppsAct = "";
+function lessFilms(arr){
+    let actor = ""
+    let apps = 10;   
+    for(let i =0; i < arr.length; i++){
+        if(arr[i].apps < apps){
+          apps = arr[i].apps;
+          actor = arr[i].actor
+        }
+    }
+    lessAppsAct = actor;
+    return console.log(actor);
+}
+
+lessFilms(actors);
+console.log(lessAppsAct);
+for(let i in bondFilms){
+    if(bondFilms[i].actor === lessAppsAct){
+        console.log(bondFilms[i]);
+    }
+}
